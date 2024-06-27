@@ -1,0 +1,13 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://hotelservice.com.com/tutorialtype"
+           xmlns="http://hotelservice.com.com/tutorialtype">
+
+    <xs:complexType name="TutorialType">
+        <xs:all>
+            <xs:element name="id" type="xs:long" />
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="author" type="xs:string" />
+        </xs:all>
+    </xs:complexType>
+
+</xs:schema>

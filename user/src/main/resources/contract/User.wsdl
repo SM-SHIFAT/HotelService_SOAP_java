@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UserService"
+             targetNamespace="http://www.wstutorial.com/ws/UserService"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.wstutorial.com/ws/UserService"
+             xmlns:user="http://hotelservice.com/user"
+             xmlns:login="http://hotelservice.com/login"
+             xmlns:signup="http://hotelservice.com/signup">
+
+    <types>
+        <xs:schema targetNamespace="http://www.wstutorial.com/ws/UserService">
+            <xs:import schemaLocation="../schema/user.xsd" namespace="http://hotelservice.com/user"/>
+            <xs:import schemaLocation="../schema/LoginRequest.xsd" namespace="http://hotelservice.com/login"/>
+            <xs:import schemaLocation="../schema/LoginResponse.xsd" namespace="http://hotelservice.com/login"/>
+            <xs:import schemaLocation="../schema/SignupRequest.xsd" namespace="http://hotelservice.com/signup"/>
+            <xs:import schemaLocation="../schema/SignupResponse.xsd" namespace="http://hotelservice.com/signup"/>
+        </xs:schema>
+    </types>
+
+    <!-- Messages -->
+    <message name="LoginRequestMsg">
+        <part name="params" element="login:LoginRequest"/>
+    </message>
+    <message name="LoginResponseMsg">
+        <part name="params" element="login:LoginResponse"/>
+    </message>
+    <message name="SignupRequestMsg">
+        <part name="params" element="signup:SignupRequest"/>
+    </message>
+    <message name="SignupResponseMsg">
+        <part name="params" element="signup:SignupResponse"/>
+    </message>
+
+    <portType name="UserServicePortType">
+        <operation name="Login">
+            <input message="tns:LoginRequestMsg"/>
+            <output message="tns:LoginResponseMsg"/>
+        </operation>
+        <operation name="Signup">
+            <input message="tns:SignupRequestMsg"/>
+            <output message="tns:SignupResponseMsg"/>
+        </operation>
+    </portType>
+
+    <binding name="UserServiceSOAPBinding" type="tns:UserServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Login">
+            <soap:operation soapAction="login"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="Signup">
+            <soap:operation soapAction="signup"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+
+    <service name="UserService">
+        <port name="UserServicePort" binding="tns:UserServiceSOAPBinding">
+            <soap:address location="http://localhost:8081/wsdlfirst/userService"/>
+        </port>
+    </service>
+</definitions>
