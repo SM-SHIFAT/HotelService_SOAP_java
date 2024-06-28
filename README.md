@@ -44,7 +44,7 @@ defines each operation for a port type using the binding classes. It may call re
 Makes a message dispatcher bean that is vital for all web services. makes a wsdl for the web service using the schema and endpoint class.
 
 ## Principles Followed
-| principle        | User | Post | Feed |
+| principle        | User | Room | Payment |
 | ---------------- | ---- | ---- | ---- |
 | Service Contract | ✔️   | ✔️   | ✔️   |
 | Loose Coupling   | ✔️   | ✔️   |      |
