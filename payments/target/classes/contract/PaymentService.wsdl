@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PaymentService"
+             targetNamespace="http://hotelservice.com/payment"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://hotelservice.com/payment">
+
+    <types>
+        <xs:schema targetNamespace="http://hotelservice.com/payment"
+                   xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:import schemaLocation="../schema/payment.xsd" namespace="http://hotelservice.com/payment"/>
+        </xs:schema>
+    </types>
+
+    <!-- Messages -->
+    <message name="MakePaymentRequestMsg">
+        <part name="params" element="tns:PaymentRequest"/>
+    </message>
+    <message name="MakePaymentResponseMsg">
+        <part name="params" element="tns:MakePaymentResponse"/>
+    </message>
+
+    <!-- Port Type -->
+    <portType name="PaymentServicePortType">
+        <operation name="MakePayment">
+            <input message="tns:MakePaymentRequestMsg"/>
+            <output message="tns:MakePaymentResponseMsg"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="PaymentServiceSOAPBinding" type="tns:PaymentServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="MakePayment">
+            <soap:operation soapAction="makePayment"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="PaymentService">
+        <port name="PaymentServicePort" binding="tns:PaymentServiceSOAPBinding">
+            <soap:address location="http://localhost:8083/wsdlfirst/paymentService"/>
+        </port>
+    </service>
+
+</definitions>

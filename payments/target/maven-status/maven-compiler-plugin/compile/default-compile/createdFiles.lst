@@ -1,0 +1,7 @@
+com\hotelservice\payment\ObjectFactory.class
+com\hotelservice\payment\MakePaymentResponse.class
+com\wstutorial\ws\RoomServiceEndpoint.class
+com\wstutorial\ws\WsdlFirstApp.class
+com\hotelservice\payment\PaymentRequest.class
+com\hotelservice\payment\package-info.class
+com\wstutorial\ws\WebServiceConfig.class
