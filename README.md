@@ -1,4 +1,4 @@
-# OYE Hotel Service
+# OYE Hotel Management Service
 
 ## Subtitle
 An service management based backend server for a Hotel Management software. 
