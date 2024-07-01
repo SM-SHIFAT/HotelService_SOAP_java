@@ -5,12 +5,15 @@
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
              xmlns:xs="http://www.w3.org/2001/XMLSchema"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:statement="http://hotelservice.com/getallstatement"
              xmlns:tns="http://hotelservice.com/payment">
 
     <types>
         <xs:schema targetNamespace="http://hotelservice.com/payment"
                    xmlns="http://www.w3.org/2001/XMLSchema">
+
             <xs:import schemaLocation="../schema/payment.xsd" namespace="http://hotelservice.com/payment"/>
+            <xs:import schemaLocation="../schema/statement.xsd" namespace="http://hotelservice.com/getallstatement"/>
         </xs:schema>
     </types>
 
@@ -19,7 +22,13 @@
         <part name="params" element="tns:PaymentRequest"/>
     </message>
     <message name="MakePaymentResponseMsg">
-        <part name="params" element="tns:MakePaymentResponse"/>
+        <part name="params" element="tns:PaymentResponse"/>
+    </message>
+    <message name="GetAllStatementRequestMsg">
+        <part name="params" element="statement:GetAllStatementRequest"/>
+    </message>
+    <message name="GetAllStatementResponseMsg">
+        <part name="params" element="statement:GetAllStatementResponse"/>
     </message>
 
     <!-- Port Type -->
@@ -27,6 +36,10 @@
         <operation name="MakePayment">
             <input message="tns:MakePaymentRequestMsg"/>
             <output message="tns:MakePaymentResponseMsg"/>
+        </operation>
+        <operation name="GetStatement">
+            <input message="tns:GetAllStatementRequestMsg"/>
+            <output message="tns:GetAllStatementResponseMsg"/>
         </operation>
     </portType>
 
@@ -45,12 +58,24 @@
                 <soap:fault name="fault" use="literal"/>
             </fault>
         </operation>
+        <operation name="GetStatement">
+            <soap:operation soapAction="getStatement"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
     </binding>
 
     <!-- Service -->
     <service name="PaymentService">
         <port name="PaymentServicePort" binding="tns:PaymentServiceSOAPBinding">
-            <soap:address location="http://localhost:8083/wsdlfirst/paymentService"/>
+            <soap:address location="http://localhost:8084/wsdlfirst/paymentService"/>
         </port>
     </service>
 

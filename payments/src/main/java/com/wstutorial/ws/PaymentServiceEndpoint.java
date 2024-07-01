@@ -1,10 +1,13 @@
 
 package com.wstutorial.ws;
 
-import com.hotelservice.payment.MakePaymentResponse;
-import com.hotelservice.payment.PaymentRequest;
+import com.wstutorial.ws.generated.getallstatement.GetAllStatementResponse;
+import com.wstutorial.ws.generated.payment.PaymentResponse;
+import com.wstutorial.ws.generated.payment.PaymentRequest;
+
 import com.wstutorial.ws.generated.room.RoomType;
-import com.wstutorial.ws.roomclients.RoomClients;
+import com.wstutorial.ws.roomclients.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -17,44 +20,50 @@ import java.util.List;
 
 @Endpoint
 public class PaymentServiceEndpoint {
-//	private final RoomRepository roomRepository;
+	private final PaymentRepository paymentRepository;
+
+    @Autowired
+    public PaymentServiceEndpoint(PaymentRepository paymentRepository) {
+        this.paymentRepository = paymentRepository;
+    }
 
     private static final String NAMESPACE_URI = "http://hotelservice.com/payment";
 
+
+    @PayloadRoot(namespace = "http://hotelservice.com/getallstatement", localPart = "GetAllStatementRequest")
+    @ResponsePayload
+    public GetAllStatementResponse getAllStatement() {
+        GetAllStatementResponse response = new GetAllStatementResponse();
+
+        response.setStatement(paymentRepository.getAllStatements());
+        return response;
+    }
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PaymentRequest")
     @ResponsePayload
-    public MakePaymentResponse makePayment(@RequestPayload PaymentRequest request) {
-        MakePaymentResponse response = new MakePaymentResponse();
-        boolean paymentSuccess = processPayment(request);
+    public PaymentResponse makePayment(@RequestPayload PaymentRequest request) {
+        PaymentResponse response = new PaymentResponse();
+        boolean paymentSuccess =  processPayment(request);
+
         response.setSuccess(paymentSuccess);
         return response;
     }
 
     private boolean processPayment(PaymentRequest request) {
         try {
-            List<RoomType> roomList = RoomClients.getAllRooms();
+
             int roomNumber = request.getRoomNumber();
-            boolean isAvailable = false;
+            int amount = request.getAmount();
+            String date = request.getDate();
+            String uid = request.getUserId();
 
-            System.out.print("Room number:"+ roomNumber);
+            boolean a = RoomClients.addLog("Payment request for room: "+roomNumber+". user: "+uid+" paid: "+amount+". date: "+ date);
+            String statement =date+": "+ amount+" paid by user "+ uid+ " for room "+ roomNumber;
+            paymentRepository.addPaymentStatement(statement);
+                System.out.print(statement);
+                return a;
 
-            for (RoomType room : roomList) {
-                if (room.getRoomNumber() == roomNumber) {
-                    isAvailable = room.isIsAvailable();
-                }
-            }
 
-            if (isAvailable){
-                System.out.print("Room available. Payment success");
-                RoomClients.bookRoomAfterPay(roomNumber);
-                System.out.print("Room booked: "+ roomNumber);
-                return true;
-            }
-            else{
-                System.out.print("Room is not available. Payment failed");
-                return false;
-
-            }
 
 
         } catch (IOException e) {

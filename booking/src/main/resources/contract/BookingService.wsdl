@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="BookingService"
+             targetNamespace="http://hotelservice.com/booking"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:booking="http://hotelservice.com/booking"
+             xmlns:checkout="http://hotelservice.com/checkout"
+             xmlns:availablerooms="http://hotelservice.com/availablerooms"
+             xmlns:tns="http://hotelservice.com/booking">
+
+    <types>
+        <xs:schema targetNamespace="http://hotelservice.com/booking"
+                   xmlns="http://www.w3.org/2001/XMLSchema">
+            <xs:import schemaLocation="../schema/booking.xsd" namespace="http://hotelservice.com/booking"/>
+            <xs:import schemaLocation="../schema/checkout.xsd" namespace="http://hotelservice.com/checkout"/>
+            <xs:import schemaLocation="../schema/availablerooms.xsd" namespace="http://hotelservice.com/availablerooms"/>
+        </xs:schema>
+    </types>
+
+    <!-- Messages -->
+    <message name="BookingRequestMsg">
+        <part name="params" element="booking:BookingRequest"/>
+    </message>
+    <message name="BookingResponseMsg">
+        <part name="params" element="booking:BookingResponse"/>
+    </message>
+    <message name="CheckoutRequestMsg">
+        <part name="params" element="checkout:CheckoutRequest"/>
+    </message>
+    <message name="CheckoutResponseMsg">
+        <part name="params" element="checkout:CheckouResponse"/>
+    </message>
+    <message name="AvailableRoomsRequestMsg">
+        <part name="params" element="availablerooms:GetAvailableRoomsRequest"/>
+    </message>
+    <message name="AvailableRoomsResponseMsg">
+        <part name="params" element="availablerooms:GetAvailableRoomsResponse"/>
+    </message>
+
+    <!-- Port Type -->
+    <portType name="BookingServicePortType">
+        <operation name="GiveBooking">
+            <input message="tns:BookingRequestMsg"/>
+            <output message="tns:BookingResponseMsg"/>
+        </operation>
+        <operation name="MakeCheckout">
+            <input message="tns:CheckoutRequestMsg"/>
+            <output message="tns:CheckoutResponseMsg"/>
+        </operation>
+        <operation name="GetAvailableRooms">
+            <input message="tns:AvailableRoomsRequestMsg"/>
+            <output message="tns:AvailableRoomsResponseMsg"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="BookingServiceSOAPBinding" type="tns:BookingServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GiveBooking">
+            <soap:operation soapAction="giveBooking"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="MakeCheckout">
+            <soap:operation soapAction="makeCheckout"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="GetAvailableRooms">
+            <soap:operation soapAction="getAvailableRooms"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="BookingService">
+        <port name="BookingServicePort" binding="tns:BookingServiceSOAPBinding">
+            <soap:address location="http://localhost:8083/wsdlfirst/bookingService"/>
+        </port>
+    </service>
+
+</definitions>

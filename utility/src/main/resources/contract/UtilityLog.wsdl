@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Utility"
+             targetNamespace="http://www.wstutorial.com/ws/Utility"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:addlog="http://hotelservice.com/addlog"
+             xmlns:tns="http://www.wstutorial.com/ws/Utility">
+
+    <types>
+        <xs:schema targetNamespace="http://www.wstutorial.com/ws/Utility">
+            <xs:import schemaLocation="../schema/addlog.xsd" namespace="http://hotelservice.com/addlog"/>
+        </xs:schema>
+    </types>
+
+    <!-- Messages -->
+    <message name="AddLogRequestMsg">
+        <part name="logMessage" element="addlog:AddLogRequest"/>
+    </message>
+    <message name="AddLogResponseMsg">
+        <part name="success" element="addlog:AddLogResponse"/>
+    </message>
+
+    <portType name="UtilityPortType">
+        <operation name="AddLog">
+            <input message="tns:AddLogRequestMsg"/>
+            <output message="tns:AddLogResponseMsg"/>
+        </operation>
+    </portType>
+
+    <binding name="UtilitySOAPBinding" type="tns:UtilityPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="AddLog">
+            <soap:operation soapAction="addLog"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+
+    <service name="UtilityService">
+        <port name="UtilityPort" binding="tns:UtilitySOAPBinding">
+            <soap:address location="http://localhost:8085/wsdlfirst/utilityService"/>
+        </port>
+    </service>
+</definitions>

@@ -11,11 +11,12 @@
                 <xs:element name="roomNumber" type="xs:int"/>
                 <xs:element name="amount" type="xs:int"/>
                 <xs:element name="date" type="xs:string"/>
+                <xs:element name="isPaid" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="MakePaymentResponse">
+    <xs:element name="PaymentResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="success" type="xs:boolean"/>

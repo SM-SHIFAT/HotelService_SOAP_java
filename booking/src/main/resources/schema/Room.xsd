@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:room="http://hotelservice.com/room" targetNamespace="http://hotelservice.com/room" elementFormDefault="qualified">
+    <xs:element name="Room" type="room:RoomType"/>
+    <xs:complexType name="RoomType">
+        <xs:sequence>
+            <xs:element name="roomNumber" type="xs:int"/>
+            <xs:element name="roomType" type="xs:string"/>
+            <xs:element name="roomCost" type="xs:int"/>
+            <xs:element name="isAvailable" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -14,7 +14,7 @@ public class WsdlFirstApp {
     @Bean
     public WebServiceTemplate webServiceTemplate() {
         WebServiceTemplate template = new WebServiceTemplate();
-        template.setDefaultUri("http://localhost:8082/wsdlfirst/roomService"); // Endpoint URL of RoomService
+        template.setDefaultUri("http://localhost:8082/wsdlfirst/paymentService"); // Endpoint URL of RoomService
         return template;
     }
 }

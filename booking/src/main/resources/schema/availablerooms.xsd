@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:availablerooms="http://hotelservice.com/availablerooms"
+           xmlns:room="http://hotelservice.com/room"
+           targetNamespace="http://hotelservice.com/availablerooms"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://hotelservice.com/room" schemaLocation="Room.xsd"/>
+    <xs:element name="GetAvailableRoomsRequest" type="xs:anyType"/>
+
+    <xs:element name="GetAvailableRoomsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="availableRooms" type="room:RoomType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

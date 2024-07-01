@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bookroom="http://hotelservice.com/addlog"
+           targetNamespace="http://hotelservice.com/addlog"
+           elementFormDefault="qualified">
+    <xs:element name="AddLogRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="logMessage" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddLogResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
