@@ -7,6 +7,7 @@
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
              xmlns:tns="http://www.wstutorial.com/ws/UserService"
              xmlns:user="http://hotelservice.com/user"
+             xmlns:getuser="http://hotelservice.com/getuser"
              xmlns:login="http://hotelservice.com/login"
              xmlns:signup="http://hotelservice.com/signup">
 
@@ -17,6 +18,7 @@
             <xs:import schemaLocation="../schema/LoginResponse.xsd" namespace="http://hotelservice.com/login"/>
             <xs:import schemaLocation="../schema/SignupRequest.xsd" namespace="http://hotelservice.com/signup"/>
             <xs:import schemaLocation="../schema/SignupResponse.xsd" namespace="http://hotelservice.com/signup"/>
+            <xs:import schemaLocation="../schema/GetUser.xsd" namespace="http://hotelservice.com/getuser"/>
         </xs:schema>
     </types>
 
@@ -33,6 +35,12 @@
     <message name="SignupResponseMsg">
         <part name="params" element="signup:SignupResponse"/>
     </message>
+    <message name="GetUserRequestMsg">
+        <part name="params" element="getuser:GetUserRequest"/>
+    </message>
+    <message name="GetUserResponseMsg">
+        <part name="params" element="getuser:GetUserResponse"/>
+    </message>
 
     <portType name="UserServicePortType">
         <operation name="Login">
@@ -42,6 +50,10 @@
         <operation name="Signup">
             <input message="tns:SignupRequestMsg"/>
             <output message="tns:SignupResponseMsg"/>
+        </operation>
+        <operation name="Getuser">
+            <input message="tns:GetUserRequestMsg"/>
+            <output message="tns:GetUserResponseMsg"/>
         </operation>
     </portType>
 
@@ -61,6 +73,18 @@
         </operation>
         <operation name="Signup">
             <soap:operation soapAction="signup"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="Getuser">
+            <soap:operation soapAction="getUser"/>
             <input>
                 <soap:body use="literal"/>
             </input>
