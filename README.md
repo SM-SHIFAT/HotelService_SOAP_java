@@ -37,7 +37,7 @@ These operations have been divided into 5 services.
 5. **Utility**: [Utility.wsdl](http://localhost:8085/wsdlfirst/utility.wsdl)
 
 
-## Principles appliced: 
+## Principles applied: 
 1. ***Service Autonomy***:
 Each service (User, Room, Payment, Booking, and Utility) is designed to operate independently, with its own logic and decision-making authority. For example, the Payment Service manages user payments without relying on other services to make decisions.
 
