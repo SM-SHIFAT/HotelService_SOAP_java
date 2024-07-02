@@ -22,13 +22,12 @@ These operations have been divided into 5 services.
 4. **Booking Service**: a *Task Service* that manages booking related operations.
 5. **Utility Service**: a *Utility Service* that manages logs of each successful payments.
 
-## Attachments
-In here 3 maven spring boot project is available related to each of the services.
-
 ## Service Contracts
-1. **User**: [User.wsdl](http://localhost:8081/ws/user.wsdl)
-2. **Room**: [RoomService.wsdl](http://localhost:8082/ws/roomservice.wsdl)
-3. **Payment**: [PaymentService.wsdl](http://localhost:8083/ws/paymentservice.wsdl)
+1. **User**: [User.wsdl](http://localhost:8081/wsdlfirst/user.wsdl)
+2. **Room**: [RoomService.wsdl](http://localhost:8082/wsdlfirst/roomservice.wsdl)
+3. **Payment**: [PaymentService.wsdl](http://localhost:8084/wsdlfirst/paymentservice.wsdl)
+4. **Booking**: [Booking.wsdl](http://localhost:8083/wsdlfirst/booking.wsdl)
+5. **Utility**: [Utility.wsdl](http://localhost:8085/wsdlfirst/utility.wsdl)
 
 ## Relation between the services
 
