@@ -65,9 +65,9 @@ This documentation provides an overview of five Java SOAP web services: User, Ro
 
 ### Services
 1. [**User Service**](#1-user-service) Entity Service
-2. [**Room Service**](#room-service) (Entity Service)
-3. [**Payment Service**](#payment-service) (Entity Service)
-4. [**Booking Service**](#booking-service) (Task Service)
+2. [**Room Service**](#2-room-service) (Entity Service)
+3. [**Payment Service**](#3-payment-service) (Entity Service)
+4. [**Booking Service**](#4-booking-service) (Task Service)
 5. [**Utility Service**](#5-utility-service) (Utility Service)
 
 ## 1. User Service
