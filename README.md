@@ -64,11 +64,11 @@ The services are discoverable through their WSDL files, which provide a standard
 This documentation provides an overview of five Java SOAP web services: User, Room, Payment, Booking, and Utility. Each service has various operations, categorized based on their functionality. 
 
 ### Services
-1. **User Service** (Entity Service)
-2. **Room Service** (Entity Service)
-3. **Payment Service** (Entity Service)
-4. **Booking Service** (Task Service)
-5. **Utility Service** (Utility Service)
+1. [**User Service:**](#user-service) Entity Service
+2. [**Room Service**](#room-service) (Entity Service)
+3. [**Payment Service**](#payment-service) (Entity Service)
+4. [**Booking Service**](#booking-service) (Task Service)
+5. [**Utility Service**](#utility-service) (Utility Service)
 
 ## 1. User Service
 The User Service provides operations for managing user-related actions. 
@@ -78,9 +78,6 @@ The User Service provides operations for managing user-related actions.
 - **login**: Authenticates a user with the provided credentials.
 - **signup**: Registers a new user with the provided information.
 
-### Access
-All operations in the User Service can be accessed directly.
-
 ## 2. Room Service
 The Room Service manages room-related operations.
 
@@ -89,9 +86,6 @@ The Room Service manages room-related operations.
 - **bookRoom**: Books a specified room.
 - **checkoutRoom**: Checks out from a specified room.
 
-### Access
-All operations in the Room Service can be accessed directly.
-
 ## 3. Payment Service
 The Payment Service handles payment-related operations.
 
@@ -99,9 +93,6 @@ The Payment Service handles payment-related operations.
 - **makePayment**: Processes a payment for a booking.
   - **Dependencies**: Accesses the `addLog` operation in the Utility Service to add a log entry.
 - **getStatement**: Retrieves the payment statement for a user.
-
-### Access
-All operations in the Payment Service can be accessed directly.
 
 ## 4. Booking Service
 The Booking Service manages the booking process and integrates with other services.
@@ -114,17 +105,11 @@ The Booking Service manages the booking process and integrates with other servic
 - **checkout**: Completes the checkout process for a booking.
   - **Dependencies**: Accesses `checkoutRoom` operation in the Room Service.
 
-### Access
-All operations in the Booking Service can be accessed directly.
-
 ## 5. Utility Service
 The Utility Service provides utility operations for other services.
 
 ### Operations
 - **addLog**: Adds a log entry for a specified action.
-
-### Access
-All operations in the Utility Service can be accessed directly.
 
 ## Service Interactions
 - **Booking Service**:
