@@ -64,11 +64,11 @@ The services are discoverable through their WSDL files, which provide a standard
 This documentation provides an overview of five Java SOAP web services: User, Room, Payment, Booking, and Utility. Each service has various operations, categorized based on their functionality. 
 
 ### Services
-1. [**User Service:**](#user-service) Entity Service
+1. [**User Service**](#1-user-service) Entity Service
 2. [**Room Service**](#room-service) (Entity Service)
 3. [**Payment Service**](#payment-service) (Entity Service)
 4. [**Booking Service**](#booking-service) (Task Service)
-5. [**Utility Service**](#utility-service) (Utility Service)
+5. [**Utility Service**](#5-utility-service) (Utility Service)
 
 ## 1. User Service
 The User Service provides operations for managing user-related actions. 
