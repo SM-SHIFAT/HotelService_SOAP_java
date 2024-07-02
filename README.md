@@ -1,9 +1,11 @@
 # OYE Hotel Management Service
 
-## Subtitle
-An service management based backend server for a Hotel Management software. 
+## KeyPoints
+
 
 ## Description
+This project is a Java-based implementation of a hotel management system using Service-Oriented Architecture (SOA) principles. The system consists of five web services: User, Room, Payment, Booking, and Utility. Each service is designed to operate independently, providing a specific functionality to the overall system. The services communicate with each other using SOAP (Simple Object Access Protocol) protocol, enabling loose coupling and reusability. The project demonstrates the application of SOA principles, such as service autonomy, reusability, abstraction, composability, and discoverability, to build a scalable and maintainable hotel management system.
+
 Here an user of the app can do the following operations:
 1. ***Signup*** for a new account
 2. ***Sign In*** to the existing account
