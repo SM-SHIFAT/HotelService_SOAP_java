@@ -49,6 +49,7 @@ The services are loosely coupled, meaning that they don't have tight dependencie
 6. ***Service Discoverability***:
 The services are discoverable through their WSDL files, which provide a standardized way of describing the service interface.
 
+
 -------------------------------------------------------------------------------------------
 # Java SOAP Web Services Documentation
 
