@@ -1,6 +1,11 @@
 # OYE Hotel Management Service
 
-## KeyPoints
+### KeyPoints
+- [Description](#description)
+- [Service Contracts](#servicecontracts)
+- [Principles appliced](#principlesappliced)
+- [Overview](#overview)
+
 
 
 ## Description
