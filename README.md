@@ -2,8 +2,8 @@
 
 ### KeyPoints
 - [Description](#description)
-- [Service Contracts](#servicecontracts)
-- [Principles appliced](#principlesappliced)
+- [Service Contracts](#service-contracts)
+- [Principles appliced](#principles-appliced)
 - [Overview](#overview)
 
 
