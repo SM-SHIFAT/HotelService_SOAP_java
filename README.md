@@ -29,22 +29,25 @@ These operations have been divided into 5 services.
 4. **Booking**: [Booking.wsdl](http://localhost:8083/wsdlfirst/booking.wsdl)
 5. **Utility**: [Utility.wsdl](http://localhost:8085/wsdlfirst/utility.wsdl)
 
-## Relation between the services
+------------------------------------------------------------------------------------------
+## Principles appliced: 
+1. ***Service Autonomy***:
+Each service (User, Room, Payment, Booking, and Utility) is designed to operate independently, with its own logic and decision-making authority. For example, the Payment Service manages user payments without relying on other services to make decisions.
 
-Here the payment consumes the services User and RoomService who also independent operations of their own. While making the payment, the payment service sends a request to the RoomService and receives the list of Rooms available. After that, It parses the response and check the returned list for the availabity of the room user requested. if its available then it makes the payment. 
+2. ***Service Reusability***:
+The services are designed to be reusable across the application. For instance, the Room Service provides operations for managing rooms, which can be reused by the Booking Service to book a room.
 
-#### Schema
-Schema contains the definitions of all the datatypes of the binding class.
-#### Application properties
-defines the port number and name of the application
-#### Application Class
-Contains the main function
-#### "Generated" package
-contains all the binding classes
-#### Endpoint Class
-defines each operation for a port type using the binding classes. It may call repository (dummy database) or client (consumer of other web services) according to its need.
-#### Config Class
-Makes a message dispatcher bean that is vital for all web services. makes a wsdl for the web service using the schema and endpoint class.
+3. ***Service Abstraction***:
+The services expose their functionality through abstract interfaces (WSDL files), hiding the underlying implementation details. This allows for loose coupling between services and makes it easier to change or replace individual services without affecting the overall system.
+
+4. ***Service Composability***:
+The services are designed to be composed together to achieve a higher-level business capability. For example, the Booking Service composes the Room Service and Payment Service to create a booking.
+
+5. ***Loose Coupling***:
+The services are loosely coupled, meaning that they don't have tight dependencies on each other. This is evident in the way the Payment Service consumes the Room Service and User Service, but doesn't require a direct reference to their implementation.
+
+6. ***Service Discoverability***:
+The services are discoverable through their WSDL files, which provide a standardized way of describing the service interface.
 
 -------------------------------------------------------------------------------------------
 # Java SOAP Web Services Documentation
