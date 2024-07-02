@@ -8,15 +8,19 @@ Here an user of the app can do the following operations:
 1. ***Signup*** for a new account
 2. ***Sign In*** to the existing account
 3. ***Check for available rooms*** 
-4. ***Booking*** online
+4. ***Booking*** hotel room.
 5. ***Check-out*** from the hotel
 6. ***Make Paymens***
+7. Get ***Payment Statement***
+8. ***Log*** every payment statement.
 
 
-These operations have been divided into 3 services.
+These operations have been divided into 5 services.
 1. **User Service** : an *Entity Service* that is concerned with management of the user account
 2. **Room Service**: an *Entity Service* that provide room details, and concerned with booking and checkout
 3. **Payment Service**: a *Entity Service* that manages user payments.
+4. **Booking Service**: a *Task Service* that manages booking related operations.
+5. **Utility Service**: a *Utility Service* that manages logs of each successful payments.
 
 ## Attachments
 In here 3 maven spring boot project is available related to each of the services.
